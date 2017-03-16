@@ -4,12 +4,12 @@ from flask_mail import Message
 from . import mail
 
 
-#发送邮件，需注册程序上下文
+#异步发送邮件，需注册程序上下文
 def send_async_email(app, msg):
     with app.app_context():
         mail.send(msg)
 
-
+#异步发送邮件
 def send_email(to, subject, template, **kwargs):
     app = current_app._get_current_object()
     msg = Message(app.config['FLASKY_MAIL_SUBJECT_PREFIX'] + ' ' + subject,

@@ -7,12 +7,13 @@ class Config:
     SQLALCHEMY_COMMIT_ON_TEARDOWN = True
     SQLALCHEMY_TRACK_MODIFICATIONS = False
     MAIL_SERVER = 'smtp.qq.com'
-    MAIL_PORT = 587
+    MAIL_PORT = 465
+    MAIL_USE_TLS = False
     MAIL_USE_SSL = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
     FLASKY_MAIL_SUBJECT_PREFIX = '[Flasky]'
-    FLASKY_MAIL_SENDER = '天行健 管理 <flasky@example.com>'
+    FLASKY_MAIL_SENDER = '499910843@qq.com>'#邮箱要与发送邮箱一致
     FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
 
     @staticmethod

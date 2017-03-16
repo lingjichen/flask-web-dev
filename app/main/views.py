@@ -4,6 +4,7 @@ from ..models import User
 from ..email import send_email
 from . import main
 from .forms import NameForm
+from datetime import datetime
 
 
 #注册路由
@@ -23,6 +24,6 @@ def index():
             session['known'] = True
         session['name'] = form.name.data
         return redirect(url_for('.index'))
-    return render_template('index.html',
+    return render_template('index.html',current_time=datetime.utcnow(),
                            form=form, name=session.get('name'),
                            known=session.get('known', False))

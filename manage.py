@@ -9,13 +9,13 @@ app = create_app(os.getenv('FLASK_CONFIG') or 'default')
 manager = Manager(app)
 migrate = Migrate(app, db)
 
-
+#自动导入程序、数据库、模型
 def make_shell_context():
     return dict(app=app, db=db, User=User, Role=Role)
 manager.add_command("shell", Shell(make_context=make_shell_context))
 manager.add_command('db', MigrateCommand)
 
-
+#运行单元测试
 @manager.command
 def test():
     """Run the unit tests."""
