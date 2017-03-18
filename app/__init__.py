@@ -5,12 +5,15 @@ from flask_moment import Moment
 from flask_sqlalchemy import SQLAlchemy
 from config import config
 from flask_login import LoginManager
+from flask_pagedown import PageDown
 
 
 bootstrap = Bootstrap()
 mail = Mail()
 moment = Moment()
 db = SQLAlchemy()
+pagedown = PageDown()
+
 login_manager = LoginManager()
 login_manager.session_protection = 'strong'#session_protection提供不同安全等级防止用户会话遭篡改
 login_manager.login_view = 'auth.login'
@@ -27,6 +30,7 @@ def create_app(config_name):
     moment.init_app(app)
     db.init_app(app)
     login_manager.init_app(app)
+    pagedown.init_app(app)
 
 #从main文件夹中提供模块，注册蓝本
     from .main import main as main_blueprint
