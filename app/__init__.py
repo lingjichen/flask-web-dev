@@ -32,6 +32,12 @@ def create_app(config_name):
     login_manager.init_app(app)
     pagedown.init_app(app)
 
+    #把所有请求重新定向到http
+    if not app.debug and not app.testing and not app.config['SSL_DISABLE']:
+        from flask_sslify import SSLify
+        sslify = SSLify(app)
+
+
 #从main文件夹中提供模块，注册蓝本
     from .main import main as main_blueprint
     app.register_blueprint(main_blueprint)
